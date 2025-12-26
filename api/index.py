@@ -5,8 +5,18 @@ import contextlib
 
 app = Flask(__name__)
 
+API_KEY = os.environ.get("MY_SECRET_TOKEN")
+
 @app.route('/api/exec', methods=['POST'])
 def execute_code():
+
+    if not MY_SECRET_TOKEN:
+         return jsonify({"error": "Server configuration error: Token not set"}), 500
+
+    auth_header = request.headers.get('Authorization')
+    if auth_header != f"Bearer {API_KEY}":
+        return jsonify({"error": "Unauthorized"}), 401
+    
     data = request.json
     # 获取 LLM 生成的代码
     code_to_run = data.get('code', '')
