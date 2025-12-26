@@ -11,7 +11,7 @@ API_KEY = os.environ.get("API_KEY")
 @app.route('/api/exec', methods=['POST'])
 def execute_code():
 
-    if not MY_SECRET_TOKEN:
+    if not API_KEY:
          return jsonify({"error": "Server configuration error: Token not set"}), 500
 
     auth_header = request.headers.get('Authorization')
