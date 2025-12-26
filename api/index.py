@@ -5,7 +5,7 @@ import contextlib
 
 app = Flask(__name__)
 
-API_KEY = os.environ.get("MY_SECRET_TOKEN")
+API_KEY = os.environ.get("API_KEY")
 
 @app.route('/api/exec', methods=['POST'])
 def execute_code():
