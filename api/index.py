@@ -36,5 +36,9 @@ def execute_code():
             "stdout": stdout_capture.getvalue() # 即使报错也返回之前打印的内容
         }), 400
 
+@app.route('/api/exec', methods=['GET'])
+def test_get():
+    return "test for api"
+
 if __name__ == '__main__':
     app.run()
