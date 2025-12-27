@@ -23,6 +23,7 @@ def execute_code():
     data = request.json
     # 获取 LLM 生成的代码
     code_to_run = data.get('code', '')
+    test_code = data.get('test', '') # 新增字段
     
     # 准备捕获输出 (print 的内容)
     stdout_capture = io.StringIO()
@@ -41,6 +42,8 @@ def execute_code():
             
             # === 执行核心 ===
             exec(code_to_run, exec_globals)
+            if test_code:
+                exec(test_code, exec_globals)
 
             #如果有testcase，会出现在exec_globals
 
