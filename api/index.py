@@ -38,7 +38,7 @@ def execute_code():
             # ==============================
             # 危险动作：直接运行字符串代码
             # ==============================
-            exec_globals = {'__name__': '__main__', 'unittest': unittest}
+            exec_globals = {'__name__': 'dify_lib', 'unittest': unittest}
             
             # === 执行核心 ===
             exec(code_to_run, exec_globals)
